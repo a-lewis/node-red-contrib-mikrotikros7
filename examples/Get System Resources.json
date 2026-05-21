@@ -1,0 +1,66 @@
+[
+    {
+        "id": "tab_resources",
+        "type": "tab",
+        "label": "MikroTik - Resources",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "comment_resources",
+        "type": "comment",
+        "z": "tab_resources",
+        "name": "Get MikroTik System Resources",
+        "info": "This flow retrieves system resource information from a MikroTik device.\n\n1. Configure the mikrotik-device config node with your router IP, username and password.\n2. Click the inject node to trigger.\n3. View the result in the debug panel.\n\nmsg.payload will contain CPU load, memory usage, uptime and board information.",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "inject_resources",
+        "type": "inject",
+        "z": "tab_resources",
+        "name": "Get Resources",
+        "props": [
+            { "p": "payload" }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 160,
+        "wires": [["mikrotik_resources"]]
+    },
+    {
+        "id": "mikrotik_resources",
+        "type": "mikrotik",
+        "z": "tab_resources",
+        "name": "System Resources",
+        "device": "",
+        "action": "2",
+        "x": 420,
+        "y": 160,
+        "wires": [["debug_resources"]]
+    },
+    {
+        "id": "debug_resources",
+        "type": "debug",
+        "z": "tab_resources",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    }
+]

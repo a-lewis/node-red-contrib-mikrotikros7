@@ -1,0 +1,66 @@
+[
+    {
+        "id": "tab_wifi",
+        "type": "tab",
+        "label": "MikroTik - WiFi Clients",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "comment_wifi",
+        "type": "comment",
+        "z": "tab_wifi",
+        "name": "Get Connected WiFi Clients",
+        "info": "This flow retrieves the list of currently connected WiFi clients from a MikroTik device.\n\n1. Configure the mikrotik-device config node with your router IP, username and password.\n2. Click the inject node to trigger.\n3. View the result in the debug panel.\n\nmsg.payload will contain an array of connected clients with MAC address, signal strength, tx/rx rates and uptime.\n\nCompatible with RouterOS 6 (wireless) and RouterOS 7 (wifi).",
+        "x": 200,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "inject_wifi",
+        "type": "inject",
+        "z": "tab_wifi",
+        "name": "Get WiFi Clients",
+        "props": [
+            { "p": "payload" }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 160,
+        "wires": [["mikrotik_wifi"]]
+    },
+    {
+        "id": "mikrotik_wifi",
+        "type": "mikrotik",
+        "z": "tab_wifi",
+        "name": "WiFi Clients",
+        "device": "",
+        "action": "3",
+        "x": 420,
+        "y": 160,
+        "wires": [["debug_wifi"]]
+    },
+    {
+        "id": "debug_wifi",
+        "type": "debug",
+        "z": "tab_wifi",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 160,
+        "wires": []
+    }
+]
