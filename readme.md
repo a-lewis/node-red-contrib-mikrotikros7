@@ -3,7 +3,7 @@
 A Node-RED node for MikroTik RouterOS 6.43+ and RouterOS 7 devices.
 
 **Author:** Aaron Lewis  
-**Repository:** [github.com/a-lewis/node-red-contrib-mikrotik-ROS7](https://github.com/a-lewis/node-red-contrib-mikrotik-ROS7)
+**Repository:** [github.com/a-lewis/node-red-contrib-mikrotikros7](https://github.com/a-lewis/node-red-contrib-mikrotikros7)
 
 ---
 
